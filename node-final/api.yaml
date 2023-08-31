@@ -1,0 +1,38 @@
+openapi: 3.0.0
+info:
+  title: Swagger API Documentation for Mock project
+  description: Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
+  version: 1.0
+
+servers:
+  - url: http://localhost:3000/
+    description: Production server
+  - url: http://staging.localhost:3000/
+    description: Staging server
+
+paths:
+  /user/{userId}:
+    get:
+      tags:
+        - User Details API
+      summary: Returns a Single user details based on passed userID.
+      description: This API will accept a user_id in url and will return a single user based on id if found.
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: Parameter description in CommonMark or HTML.
+          schema:
+            # type : integer
+            # format: int64
+            type: integer
+            example: "1"
+            minimum: 1
+      responses:
+        '200':    # status code
+          description: OK
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: string
